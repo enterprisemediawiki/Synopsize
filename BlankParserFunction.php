@@ -22,7 +22,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'BlankParserFunction',
 	'url'            => 'http://github.com/jamesmontalvo3/MediaWiki-BlankParserFunction',
-	'author'         => 'James Montalvo',
+	'author'         => 'YOUR NAME',
 	'descriptionmsg' => 'blankparserfunction-desc',
 	'version'        => '0.1.0'
 );
