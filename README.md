@@ -1,4 +1,4 @@
 MediaWiki-BlankParserFunction
 =============================
 
-A starting point for simple MediaWiki parser functions
+This code is the basic framework for a MediaWiki parser function.

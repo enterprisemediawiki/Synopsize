@@ -1,0 +1,52 @@
+/* IMS Importing */
+.ims-part-number-search, .ims-item-search {
+  font-size: 11px;
+  text-align: left;
+}
+
+.ims-part-number-search ul, .ims-item-search ul {
+	margin: 0 0 0 12px !important;
+	padding:0;
+}
+
+.ims-part-number-search li, .ims-item-search li {
+	margin: 0;
+	padding: 0;
+}
+
+.ims-target-partnumber {
+  font-weight: bold;
+}
+
+.ims-target-cagePartSerial-item {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.ims-location-part {
+  font-style: italic;
+}
+
+.ims-more-info {
+  color: gray;
+  display: none;
+}
+
+.ims-more-info table {
+  border-left: solid #ccc 1px;
+  margin-bottom: 10px;
+}
+
+.ims-data-label {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.ims-serial-number-display {
+  color: blue;
+  margin-left: 3px;
+}
+
+.ims-display-name:hover {
+  cursor: pointer;
+}
