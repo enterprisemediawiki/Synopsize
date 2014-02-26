@@ -13,65 +13,61 @@
  * @licence GNU GPL v3+
  */
 
-class IMSQuery
+class BlankParserFunction
 {
 
 	static function setup ( &$parser ) {
 		
-		$parser->setFunctionHook( 'ims', array( 'IMSQuery', 'renderIMSQuery' ), SFH_OBJECT_ARGS );
+		$parser->setFunctionHook(
+			'my-function', // the name of your parser function, the same as the $magicWords value you set in BlankParserFunction.i18n.php 
+			array(
+				'BlankParserFunction',  // class to call function from
+				'renderBlankParserFunction' // function to call within that class
+			),
+			SFH_OBJECT_ARGS // defines the format of how data is passed to your function...don't worry about it for now.
+		);
 
 		return true;
 		
 	}
 	
 
-	static function renderIMSQuery ( &$parser, $frame, $args ) { // $pagesToCopyArray, $showOutput ) {
-		global $wgCanonicalNamespaceNames;
+	static function renderBlankParserFunction ( &$parser, $frame, $args ) {
 
-		self::addJSandCSS();
+		self::addJSandCSS(); // adds the javascript and CSS files 
 		
-		$part_number = trim( $frame->expand($args[0]) );
+		$first_argument = trim( $frame->expand($args[0]) );
+
 		if ( count($args) > 1 )
-			$serial_number = trim( $frame->expand($args[1]) );
+			$second_argument = trim( $frame->expand($args[1]) );
 		else
-			$serial_number = false;
+			$second_argument = "";
 		
-		if ( count($args) > 2 )
-			$cage_code = trim( $frame->expand($args[2]) );
-		else
-			$cage_code = "NASA";
-			
+		$text = $first_argument . " " . $second_argument;
+		
 		$text = Xml::tags(
-			'small',
-			array(),
-			"Note: the following data is pulled from the IMS database via a third-party script. <span style='color:red;'>Use the IMS Client before making mission decisions.</span>"
+			'div',
+			array("class" => "MyClass"),
+			$first_argument
 		);
 		
-		// use P/N only
-		if ($serial_number === false)
-			$text .= "<div class='ims-part-number-search'>Loading IMS data for part number <span class='ims-partnumber'>$part_number</span>...</div>";
+		$text .= $second_argument;
 		
-		// use P/N, S/N and Cage Code
-		else
-			$text .= "<div class='ims-item-search'>Loading IMS data for Part/Serial/Cage <span class='ims-partnumber'>$part_number</span> / <span class='ims-serialnumber'>$serial_number</span> / <span class='ims-cagecode'>$cage_code</span>...</div>";
-		
-		// global $wgOut;
-		// $wgOut->addHTML($text);
 		return $text;
-		// return "";
+
 	}
 	
 	static function addJSandCSS () {
 	
 		global $wgOut, $wgExtensionAssetsPath;
 		
-		$wgOut->addScriptFile( "$wgExtensionAssetsPath/IMSQuery/IMSQuery.js" );
+		$wgOut->addScriptFile( "$wgExtensionAssetsPath/BlankParserFunction/BlankParserFunction.js" );
 
 		$wgOut->addLink( array(
 			'rel' => 'stylesheet',
 			'type' => 'text/css',
 			'media' => "screen",
-			'href' => "$wgExtensionAssetsPath/IMSQuery/IMSQuery.css"
+			'href' => "$wgExtensionAssetsPath/BlankParserFunction/BlankParserFunction.css"
 		) );
 		
 		return true;
