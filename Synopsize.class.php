@@ -28,7 +28,7 @@ class Synopsize
 	static function processArgs( $frame, $args, $defaults ) {
 		$new_args = array();
 		for ($i=0; $i<count($args); $i++) {
-			if ( count($args) > ($i+1) )
+			if ( isset($args[$i]) )
 				$new_args[$i] = trim( $frame->expand($args[$i]) );
 			else
 				$new_args[$i] = $defaults[$i];
@@ -38,7 +38,7 @@ class Synopsize
 
 	static function renderSynopsize ( &$parser, $frame, $args ) {
 
-		self::processArgs( $frame, $args, array("", 255, 1) );
+		$args = self::processArgs( $frame, $args, array("", 255, 1) );
 	
 		// self::addJSandCSS(); // adds the javascript and CSS files 
 		
@@ -46,11 +46,14 @@ class Synopsize
 		$max_length = $args[1];
 		$max_lines  = $args[2];
 		
-		// algorithm:
 		$needle = "\n";
-		$newline_pos = 0 - strlen($needle);
 		for($i=0; $i<$max_lines; $i++) {
-			$newline_pos = strpos($full_text, $needle, $newline_pos + strlen($needle) );
+			if ($newline_pos)
+				$offset = $newline_pos + strlen($needle);
+			else
+				$offset = 0;
+			$newline_pos = strpos($full_text, $needle, $offset );
+			
 		}
 		
 		// trim to specified number of newlines
@@ -58,15 +61,11 @@ class Synopsize
 		
 		// trim at max characters
 		if (strlen($synopsis) > $max_length) {
-			$chars_from_end = $max_length - strlen($synopsis); // negative number
-			
-			// finds first space character counting backwards from the n-th
-			// character, where n = $max_length
-			$last_space = strrpos($synopsis, ' ', $chars_from_end);
-		
+			$synopsis = substr($synopsis, 0, $max_length);
+			$last_space = strrpos($synopsis, ' ');
 			$synopsis = substr($synopsis, 0, $last_space) . ' ...';
 		}
-		
+
 		return $synopsis;
 	}
 	
