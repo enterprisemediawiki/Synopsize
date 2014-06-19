@@ -1,49 +1,49 @@
 <?php
 /** 
- * The BlankParserFunction extension enables the my-function parser function.
+ * The Synopsize extension enables the my-function parser function.
  * 
  * Documentation: http://???
  * Support:       http://???
- * Source code:   http://???
+ * Source code:   https://github.com/enterprisemediawiki/Synopsize
  *
- * @file BlankParserFunction.php
+ * @file Synopsize.php
  * @addtogroup Extensions
- * @author YOURNAME
- * @copyright © 2014 by YOURNAME
+ * @author Jamesmontalvo3
+ * @copyright © 2014 by James Montalvo
  * @licence GNU GPL v3+
  */
 
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if (!defined('MEDIAWIKI')) {
-	die( "BlankParserFunction extension" );
+	die( "Synopsize extension" );
 }
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
-	'name'           => 'BlankParserFunction',
-	'url'            => 'http://github.com/jamesmontalvo3/MediaWiki-BlankParserFunction',
-	'author'         => 'YOUR NAME',
-	'descriptionmsg' => 'blankparserfunction-desc',
+	'name'           => 'Synopsize',
+	'url'            => 'https://github.com/enterprisemediawiki/Synopsize',
+	'author'         => 'Jamesmontalvo3',
+	'descriptionmsg' => 'Synopsize-desc',
 	'version'        => '0.1.0'
 );
 
 # $dir: the directory of this file, e.g. something like:
-#	1)	/var/www/wiki/extensions/BlankParserFunction
-# 	2)	C:/xampp/htdocs/wiki/extensions/BlankParserFunction
+#	1)	/var/www/wiki/extensions/Synopsize
+# 	2)	C:/xampp/htdocs/wiki/extensions/Synopsize
 $dir = dirname( __FILE__ ) . '/';
 
 # Location of "message file". Message files are used to store your extension's text
 #	that will be displayed to users. This text is generally stored in a separate
 #	file so it is easy to make text in English, German, Russian, etc, and users can
 #	easily switch to the desired language.
-$wgExtensionMessagesFiles['BlankParserFunction'] = $dir . 'BlankParserFunction.i18n.php';
+$wgExtensionMessagesFiles['Synopsize'] = $dir . 'Synopsize.i18n.php';
 
 # The "body" file will contain the bulk of a simple parser function extension. 
 #	NEED MORE INFO HERE.
 #
-$wgAutoloadClasses['BlankParserFunction'] = $dir . 'BlankParserFunction.body.php';
+$wgAutoloadClasses['Synopsize'] = $dir . 'Synopsize.class.php';
 
 # This specifies the function that will initialize the parser function.
 #	NEED MORE INFO HERE.
 #
-$wgHooks['ParserFirstCallInit'][] = 'BlankParserFunction::setup';
+$wgHooks['ParserFirstCallInit'][] = 'Synopsize::setup';
