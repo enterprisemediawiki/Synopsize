@@ -25,7 +25,7 @@ class Synopsize
 		
 	}
 	
-	static function processArgs( $args, $defaults ) {
+	static function processArgs( $frame, $args, $defaults ) {
 		$new_args = array();
 		for ($i=0; $i<count($args); $i++) {
 			if ( count($args) > ($i+1) )
@@ -38,7 +38,7 @@ class Synopsize
 
 	static function renderSynopsize ( &$parser, $frame, $args ) {
 
-		self::processArgs( $args, array("", 255, 1) );
+		self::processArgs( $frame, $args, array("", 255, 1) );
 	
 		// self::addJSandCSS(); // adds the javascript and CSS files 
 		

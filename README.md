@@ -1,4 +1,4 @@
-MediaWiki-BlankParserFunction
-=============================
+Synopsize
+=========
 
-This code is the basic framework for a MediaWiki parser function.
+Synopsize is used to extract just a specified number of lines and characters from a block of text.
