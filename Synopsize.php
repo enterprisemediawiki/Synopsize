@@ -24,7 +24,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'            => 'https://github.com/enterprisemediawiki/Synopsize',
 	'author'         => '[http://www.mediawiki.org/wiki/User:Jamesmontalvo3 James Montalvo]',
 	'descriptionmsg' => 'Synopsize-desc',
-	'version'        => '0.1.0'
+	'version'        => '0.1.1'
 );
 
 # $dir: the directory of this file, e.g. something like:
