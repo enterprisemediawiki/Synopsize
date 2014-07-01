@@ -27,7 +27,11 @@ class Synopsize
 	
 	static function processArgs( $frame, $args, $defaults ) {
 		$new_args = array();
-		for ($i=0; $i<count($args); $i++) {
+		$num_args = count($args);
+		$num_defaults = count($defaults);
+		$count = ($num_args > $num_defaults) ? $num_args : $num_defaults;
+		
+		for ($i=0; $i<$count; $i++) {
 			if ( isset($args[$i]) )
 				$new_args[$i] = trim( $frame->expand($args[$i]) );
 			else
