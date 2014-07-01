@@ -56,12 +56,16 @@ class Synopsize
 				$offset = $newline_pos + strlen($needle);
 			else
 				$offset = 0;
-			$newline_pos = strpos($full_text, $needle, $offset );
-			
+			$newline_pos = strpos($full_text, $needle, $offset);
 		}
-		
-		// trim to specified number of newlines
-		$synopsis = substr($full_text, 0, $newline_pos);
+
+		if ($newline_pos) {
+			// trim to specified number of newlines
+			$synopsis = substr($full_text, 0, $newline_pos);
+		}
+		else {
+			$synopsis = $full_text;
+		}
 		
 		// trim at max characters
 		if (strlen($synopsis) > $max_length) {
